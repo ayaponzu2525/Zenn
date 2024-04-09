@@ -1,0 +1,2 @@
+# zenn_scaffold
+ZennとGitHubを連携して記事を書くための環境テンプレートです

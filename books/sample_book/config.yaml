@@ -1,0 +1,10 @@
+title: Bookのテンプレート
+summary: Zennで本を書くためのテンプレートです
+topics: [zenn, book]
+published: false
+price: 0
+chapters:
+  - about
+  - chapter01
+  - chapter02
+  - appendix
