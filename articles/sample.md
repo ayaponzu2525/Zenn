@@ -1,7 +1,11 @@
 ---
-title: "Zennのサンプル記事"
+title: "2024年春アニメおすすめ"
 emoji: ""
-type: tech
-topics: [zenn, 記事]
+type: idea
+topics: [アニメ, 記事]
 published: false
 ---
+
+#　2024年春アニメおすすめ
+
+
