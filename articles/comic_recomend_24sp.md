@@ -1,11 +1,11 @@
 ---
-title: "2024年春アニメおすすめ"
+title: "125ccおすすめバイク"
 emoji: ""
 type: idea
-topics: [アニメ, 記事]
+topics: [バイク, ロマン]
 published: false
 ---
 
-#　2024年春アニメでおすすめ作品を紹介します。
+# おすすめの125ccを紹介します。
 
 
