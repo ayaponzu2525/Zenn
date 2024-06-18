@@ -476,6 +476,18 @@ if (i == 2) {
 色をHSV（色相、彩度、明度）で指定します。
 `hue`：計算した色相。
 `sat`：彩度。
-`val * digitSegments[s[i]][j]：明度。digitSegments[s[i]]`
-`[j]`が1の場合は設定した明度、0の場合は消灯（0）になります。
+* `val * digitSegments[s[i]][j]`：明度。
+`digitSegments[s[i][j]]`が1の場合は設定した明度、0の場合は消灯（0）になります。
+
+
+* `if (i == 2)およびelse if (i == 3)`(３桁目と４桁目)の場合は、インデックスに+2のオフセットを加えています。
+これは真ん中のコロンが２個分あるためです。
+
+```Cpp
+pixels.setPixelColor(36, pixels.Color(flag*100, flag*100, flag*100));
+pixels.setPixelColor(37, pixels.Color(flag*100, flag*100, flag*100));
+```
+* コロンの設定部分です。
+`flag`が1なら点灯し、0なら消灯します。
+`flag`はカウントアップする関数の中で１秒ごとに1,0と反転させています。
 # これからの展望（つぎどんなことしたいか）
