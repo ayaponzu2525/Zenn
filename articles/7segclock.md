@@ -42,7 +42,7 @@ url hima
 # 今回のすべての手順が入った全体のソースコードを置いておきます
 長いのでプルダウンしてご覧ください
 wifi設定は別ファイルをインクルードして使用しています。<br>
-wifi設定のテンプレートはgitにおいてあるのでそちらを参考に書き換えてこのソースコードのおいてあるファイルに一緒においておくとよいです。
+wifi設定のテンプレートはgitにおいてあるのでそちらを参考に書き換えてこのソースコードのおいてあるファイルの階層に一緒においておくとよいです。
 
 
 :::details 全体のソースコード
@@ -304,9 +304,37 @@ void ntpaccess(){
 }
 ```
 
-
-
 # esp32自身でカウントアップする
+カウントアップする関数はこちらです
+```Cpp
+void Clock(){
+  if (millis() - previousTime >= 1000) {   //プログラムが経過した時間が1秒経ったら
+    previousTime = millis();   //基準時間に現在時間を代入
+    flag = flag ^1; //1秒ごとに点灯
+    timeInfo.tm_sec+=1; //1秒カウントアップ
+    if(timeInfo.tm_sec == 60){
+      timeInfo.tm_sec = 0;
+      timeInfo.tm_min += 1;
+      if(timeInfo.tm_min == 60){
+        timeInfo.tm_min = 0;
+        timeInfo.tm_hour += 1;
+        if (timeInfo.tm_hour == 24){
+          timeInfo.tm_hour = 0;
+        }
+      }
+    }
+  }
+}
+```
+解説していきます。
+```Cpp
+if (millis() - previousTime >= 1000) {
+  previousTime = millis();
+```
+この部分は１秒に1回だけカウントアップするための条件を設定しています。
+`millis()`はESP32に元々用意されている関数で、プログラムが開始されてから経過した時間（ミリ秒）を返します。
+`previousTime`は私が作成した変数で、初期値は0です。
+この条件文では、現在の時間から前回の時間 `previousTime` を引いた値が1000ミリ秒（1秒）以上であるかをチェックしています。
 
 # neopixelに色を付ける
 
