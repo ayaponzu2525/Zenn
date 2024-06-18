@@ -41,8 +41,9 @@ url hima
 
 # 今回のすべての手順が入った全体のソースコードを置いておきます
 長いのでプルダウンしてご覧ください
-:::details 全体のソースコード
+全体のソースコード
 
+```C++
 #include <WiFi.h>
 #include <Adafruit_NeoPixel.h>
 #include "wifi_setting.h"
@@ -276,7 +277,7 @@ void ClockOperation(){
   delay(100);
 }
 
-:::
+```
 
 
 # esp32でntpサーバーに接続して正確な時間を取得する
