@@ -278,6 +278,7 @@ void ClockOperation(){
   delay(100);
 }
 ```
+
 </details>
 
 # esp32でntpサーバーに接続して正確な時間を取得する
