@@ -44,8 +44,6 @@ url hima
 <!-- open属性なし -->
 <details><summary>全体ソースコード</summary>
 
-(上に空行が必要)
-
 ```c++
 #include <WiFi.h>
 #include <Adafruit_NeoPixel.h>
