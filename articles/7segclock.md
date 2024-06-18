@@ -306,6 +306,7 @@ void ntpaccess(){
 
 # esp32自身でカウントアップする
 カウントアップする関数はこちらです
+
 ```Cpp
 void Clock(){
   if (millis() - previousTime >= 1000) {   //プログラムが経過した時間が1秒経ったら
@@ -326,11 +327,14 @@ void Clock(){
   }
 }
 ```
+
 解説していきます。
+
 ```Cpp
 if (millis() - previousTime >= 1000) {
   previousTime = millis();
 ```
+
 この部分は１秒に1回だけカウントアップするための条件を設定しています。
 `millis()`はESP32に元々用意されている関数で、プログラムが開始されてから経過した時間（ミリ秒）を返します。
 `previousTime`は私が作成した変数で、初期値は0です。
