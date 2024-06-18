@@ -41,6 +41,8 @@ url hima
 
 # 今回のすべての手順が入った全体のソースコードを置いておきます
 長いのでプルダウンしてご覧ください
+wifi設定は別ファイルをインクルードして使用しています。<br>
+wifi設定のテンプレートはgitにおいてあるのでそちらを参考に書き換えてこのソースコードのおいてあるファイルに一緒においておくとよいです。
 
 
 :::details 全体のソースコード
@@ -284,6 +286,25 @@ void ClockOperation(){
 
 
 # esp32でntpサーバーに接続して正確な時間を取得する
+ntpサーバーにアクセスする関数はこちらです
+簡単にコメントで解説していきます。
+```Cpp
+void ntpaccess(){
+  getLocalTime(&timeInfo);  
+  //getLocalTimeでntpサーバーにアクセスし、tmオブジェクトのtimeInfoに現在時刻を入れ込む
+
+
+  Serial.println("ntpaccess!");//シリアルモニター確認用
+  ntptime = millis();//3分に１回にするための秒数保存用変数ntpTime
+
+  Serial.print(timeInfo.tm_hour);
+  Serial.print(timeInfo.tm_min);
+  Serial.print(timeInfo.tm_sec);
+  //それぞれhour,min,secに２桁ずつ時間が格納される
+}
+```
+
+
 
 # esp32自身でカウントアップする
 
