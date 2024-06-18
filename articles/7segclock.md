@@ -335,12 +335,89 @@ if (millis() - previousTime >= 1000) {
   previousTime = millis();
 ```
 
-この部分は１秒に1回だけカウントアップするための条件を設定しています。
+<p>この部分は１秒に1回だけカウントアップするための条件を設定しています。
 `millis()`はESP32に元々用意されている関数で、プログラムが開始されてから経過した時間（ミリ秒）を返します。
 `previousTime`は私が作成した変数で、初期値は0です。
 この条件文では、現在の時間から前回の時間 `previousTime` を引いた値が1000ミリ秒（1秒）以上であるかをチェックしています。
+</p>
 
 # neopixelに色を付ける
+色を付けているのはneopixelのledを制御している関数の中で設定しています。
 
+```Cpp
+void ShowTime(int hour, int minute) {
+  // この関数は、時間と分をLEDに表示するためのものです。
+  // 入力として時間（hour）と分（minute）を受け取ります。
+  
+  int time_4_digits = hour * 100 + minute;
+  // 時間と分を4桁の整数に変換します。
+  // 例: 13時45分の場合、1345になります。
+
+  int s[4];
+  for (int i = 3; i >= 0; i--) {
+    s[i] = time_4_digits % 10;
+    time_4_digits = (time_4_digits - s[i]) / 10;
+  }
+  // 4桁の数字をそれぞれの桁に分解して配列sに保存します。
+  // 例: 1345 -> s = [1, 3, 4, 5]
+
+  pixels.clear();
+  // すべてのピクセル（LED）をクリア（消灯）します。
+
+  for (int i = 0; i < 4; i++) {     // 各桁の数字についてループします。
+    for (int j = 0; j < 18; j++) {  // 各桁の数字を表示するための18個のLEDをループします。
+      int index = i * 18 + j;
+
+      // 色の範囲を指定して設定します。
+      int huestart = 16363; // 開始の色
+      int huefin = 32766;   // 終了の色
+      int hue = ((huefin - huestart) / 37) * index + huestart;
+      
+      // 色相、彩度、明度を設定します。
+      int sat = 255;
+      int val = 200;
+      
+      if (i == 2) {
+        pixels.setPixelColor(index + 2, pixels.ColorHSV(hue, sat, val * digitSegments[s[i]][j]));
+        // 3番目の桁のLEDを設定します（オフセット+2）。
+      } else if (i == 3) {
+        pixels.setPixelColor(index + 2, pixels.ColorHSV(hue, sat, val * digitSegments[s[i]][j]));
+        // 4番目の桁のLEDを設定します（オフセット+2）。
+      } else {
+        pixels.setPixelColor(index, pixels.ColorHSV(hue, sat, val * digitSegments[s[i]][j]));
+        // 1番目と2番目の桁のLEDを設定します。
+      }
+    }
+  }
+
+  // 時刻のコロン（:）を設定します。
+  pixels.setPixelColor(36, pixels.Color(flag*100, flag*100, flag*100));
+  pixels.setPixelColor(37, pixels.Color(flag*100, flag*100, flag*100));
+  
+
+  pixels.show();// 設定した色をLEDに反映させます。
+  
+}
+
+```
+
+## ポイントとなる箇所を詳しく解説します
+* 取得してきた４桁の数字を一けたにするところ
+```Cpp
+s[i] = time_4_digits % 10;
+```
+この部分は`time_4_digits`の一番右の桁を取り出して、配列sの対応する位置に格納します。
+`% 10`は、10で割った余りを求める演算子で、これにより一番右の桁を取得できます。
+例：`time_4_digits`が1345の場合、最初の`i=3`のときは`1345 % 10 = 5`、すなわち5が取得され、`s[3]`に格納されます。
+
+```Cpp
+time_4_digits = (time_4_digits - s[i]) / 10;
+```
+この部分は、`time_4_digits`から取得した桁`s[i]`を引き、それを10で割って次の桁に進む準備をします。
+例：`time_4_digitsが1345`で`s[3]`に5を格納した後、`(1345 - 5) / 10 = 1340 / 10 = 134`となり、次のループでは`time_4_digits`は134となります。
+
+このようにして、`time_4_digits`の4桁の数字がそれぞれ`s[0]`から`s[3]`に分解されて格納されます。これにより、後続の処理で各桁を個別に操作することが可能になります。
+
+* 
 
 # これからの展望（つぎどんなことしたいか）
