@@ -45,7 +45,7 @@ url hima
 
 :::details 全体のソースコード
 
-```C++
+```Cpp
 #include <WiFi.h>
 #include <Adafruit_NeoPixel.h>
 #include "wifi_setting.h"
