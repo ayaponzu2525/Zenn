@@ -374,7 +374,10 @@ void ShowTime(int hour, int minute) {
       
       // 色相、彩度、明度を設定します。
       int sat = 255;
+      //彩度を255に設定しています。彩度は0から255の範囲で指定され、255は最も鮮やかな色を意味します。
       int val = 200;
+      //明度を200に設定しています。明度も0から255の範囲で指定され、200はかなり明るい色を意味します。
+      //valをマックスにするとかなりの電流が流れるので注意
       
       if (i == 2) {
         pixels.setPixelColor(index + 2, pixels.ColorHSV(hue, sat, val * digitSegments[s[i]][j]));
@@ -427,4 +430,52 @@ Hueとは下の画像のようなもので色相環をつかって角度で色�
 
 色相、彩度、明度を指定して使います。
 始まりの色の色相は0,終わりの色は65535になっています。
+
+```Cpp
+int huestart = 0; // 開始の色
+int huefin = 65535;   // 終了の色
+int hue = ((huefin - huestart) / 37) * index + huestart; // 色の範囲を指定して設定します
+```
+この部分で色を指定しています
+`huestart`：色の開始点を指定します。
+`huefin`：色の終了点を指定します。
+これら二つを変えることでどこの部分をつかってグラデーションにするか指定できます。
+
+```Cpp
+hue = ((huefin - huestart) / 37) * index + huestart;
+```
+この部分は`huefin`と`huestart`の差を37(neopixelは全部で74個なのでその半分）で割り、それに`index`を掛けて`huestart`を足すことで、指定された範囲内でインデックスに応じた色相を計算します。
+`index`は現在のLEDの位置を示す値で、0から徐々に増加します。
+例えば、`index`が0のとき、hueは`huestart`（0）となり、`index`が最大のとき、`hue`は`huefin`（65535）に近い値になります。
+
+```Cpp
+int sat = 255;
+      
+int val = 200;
+```
+* `sat` 彩度を255に設定しています。彩度は0から255の範囲で指定され、255は最も鮮やかな色を意味します。
+* `val` 明度を200に設定しています。明度も0から255の範囲で指定され、200はかなり明るい色を意味します。
+:::message
+valをマックスにするとかなりの電流が流れるので注意
+:::
+
+```Cpp
+if (i == 2) {
+  pixels.setPixelColor(index + 2, pixels.ColorHSV(hue, sat, val * digitSegments[s[i]][j]));
+} else if (i == 3) {
+  pixels.setPixelColor(index + 2, pixels.ColorHSV(hue, sat, val * digitSegments[s[i]][j]));
+} else {
+  pixels.setPixelColor(index, pixels.ColorHSV(hue, sat, val * digitSegments[s[i]][j]));
+}
+```
+* `pixels.setPixelColor`
+
+この関数は、指定されたインデックスのLEDに対して色を設定します。
+* `pixels.ColorHSV`
+
+色をHSV（色相、彩度、明度）で指定します。
+`hue`：計算した色相。
+`sat`：彩度。
+`val * digitSegments[s[i]][j]：明度。digitSegments[s[i]]`
+`[j]`が1の場合は設定した明度、0の場合は消灯（0）になります。
 # これからの展望（つぎどんなことしたいか）
