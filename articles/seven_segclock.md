@@ -132,6 +132,7 @@ if (millis() - previousTime >= 1000) {
 ## neopixelに色を付ける
 色を付けているのはneopixelのLEDを制御している関数の中で設定しています。
 
+:::deteals
 ```Cpp
 void ShowTime(int hour, int minute) {
   // この関数は、時間と分をLEDに表示するためのものです。
@@ -190,7 +191,7 @@ void ShowTime(int hour, int minute) {
 }
 
 ```
-
+:::
 ### 詳しく解説します
 #### 取得してきた４桁の数字を一けたずつに分解するところ
 ```Cpp
