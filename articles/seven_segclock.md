@@ -1,5 +1,5 @@
 ---
-title: "esp32とneopixelを使った7セグ風BigClock"
+title: "esp32とneopixelを使った7セグ風BigClock!"
 emoji: kissing_face_with_closed_eyes
 type: idea
 topics: [esp32, neopixel, M5stack, 電子工作, Arduino]
