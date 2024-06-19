@@ -10,6 +10,7 @@ published: false
 こんにちは！ayaponzuです。
 今回はクラスメイトと作業を分担して<br>
 esp32とneopixelを使用して7セグ風のでっかい時計を作りました。
+![](https://storage.googleapis.com/zenn-user-upload/8bc730651461-20240619.jpg)
 
 # 全体のタスク
 * 3分に１回、ntpサーバーから正確な時間を取得
