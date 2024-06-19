@@ -7,7 +7,9 @@ published: false
 ---
 
 # はじめに
-今回はesp32とneopixelを使用して7セグ風のでっかい時計を作りました。
+こんにちは！ayaponzuです。
+今回はクラスメイトと作業を分担して<br>
+esp32とneopixelを使用して7セグ風のでっかい時計を作りました。
 
 # 全体のタスク
 * 3分に１回、ntpサーバーから正確な時間を取得
@@ -47,14 +49,17 @@ M5stackサーバーに任意の時間の数字が入っていたらその時間�
 # 担当以外の大まかな手順
 1. 板にneopixelを貼る
 2. はんだ付け
+3. 3Dプリンターでカバーのデザイン
 3. neopixelを任意の数字に光らせる（プログラム）
 4. M5stackでサーバーを立てる
 5. M5stackサーバーにアクセスして数字を見る
 6. サーバーの数字に応じて時間を変更するか、ntpサーバーからの正確な時間を表示するか決める
 
-url kairi
+クラスメイトそれぞれのZennの記事はこちらです。
 
-url hima
+https://zenn.dev/kai_z/articles/7segu_clock_zenn
+
+https://zenn.dev/high_machine/articles/7segmentsclock3d
 
 # 今回のすべての手順が入った全体のソースコードを置いておきます
 長いのでプルダウンしてご覧ください
