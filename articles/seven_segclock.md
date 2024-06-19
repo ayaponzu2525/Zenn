@@ -26,6 +26,10 @@ published: false
 ![](https://storage.googleapis.com/zenn-user-upload/68d4b821338e-20240619.jpg)
 ハード側の配線は上の画像のようになっていて左から順にバケツリレーのように信号が送られていきます。
 
+![](https://storage.googleapis.com/zenn-user-upload/a63c38fee6d5-20240619.jpg)
+
+![](https://storage.googleapis.com/zenn-user-upload/46f7e739d0d5-20240619.jpg)
+
 # 私が担当したところの大まかな手順(今回の記事)
 1. esp32でntpサーバーに接続して正確な時間を取得する
 2. esp32自身でカウントアップする
