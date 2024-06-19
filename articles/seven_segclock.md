@@ -1,27 +1,27 @@
 ---
-title: "esp32とneopixelを使った7セグ風BigClock!"
+title: "esp32とNeopixelを使った7セグ風BigClock!"
 emoji: kissing_face_with_closed_eyes
 type: idea
-topics: [esp32, neopixel, M5stack, 電子工作, Arduino]
+topics: [esp32, Neopixel, M5stack, 電子工作, Arduino]
 published: true
 ---
 
 # はじめに
 こんにちは！ayaponzuです。
 今回はクラスメイトと作業を分担して<br>
-esp32とneopixelを使用して7セグ風のでっかい時計を作りました。
+esp32とNeopixelを使用して7セグ風のでっかい時計を作りました。
 ![](https://storage.googleapis.com/zenn-user-upload/8bc730651461-20240619.jpg)
 
 # 全体のタスク
 * 3分に１回、ntpサーバーから正確な時間を取得
-* neopixelをはんだ付け
-* neopixelに任意の数字を表示させる
+* Neopixelをはんだ付け
+* Neopixelに任意の数字を表示させる
 * ntpサーバーから取得した時間からesp32自身でカウントアップ
 * M5stackを用いてサーバーを立ててサーバーにある任意の数字の時間に変更できるようにする
 
 # 材料
 * esp32
-* neopixel(74個のLED)
+* Neopixel(74個のLED)
 * 板（今回は百均の石膏ボード）
 * M5stack(サーバーとして使用)
 
@@ -45,13 +45,13 @@ M5stackサーバーに任意の時間の数字が入っていたらその時間�
 # 私が担当したところの大まかな手順(今回の記事)
 1. esp32でntpサーバーに接続して正確な時間を取得する
 2. esp32自身でカウントアップする
-3. neopixelに色を付ける
+3. Neopixelに色を付ける
 
 # 担当以外の大まかな手順
-1. 板にneopixelを貼る
+1. 板にNeopixelを貼る
 2. はんだ付け
 3. 3Dプリンターでカバーのデザイン
-3. neopixelを任意の数字に光らせる（プログラム）
+3. Neopixelを任意の数字に光らせる（プログラム）
 4. M5stackでサーバーを立てる
 5. M5stackサーバーにアクセスして数字を見る
 6. サーバーの数字に応じて時間を変更するか、ntpサーバーからの正確な時間を表示するか決める
@@ -129,10 +129,10 @@ if (millis() - previousTime >= 1000) {
 `previousTime`は私が作成した変数で、初期値は0です。
 この条件文では、現在の時間から前回の時間 `previousTime` を引いた値が1000ミリ秒（1秒）以上であるかをチェックしています。
 
-## neopixelに色を付ける
-色を付けているのはneopixelのLEDを制御している関数の中で設定しています。
+## Neopixelに色を付ける
+色を付けているのはNeopixelのLEDを制御している関数の中で設定しています。
 
-:::details neopixelのLEDを制御している関数
+:::details NeopixelのLEDを制御している関数
 ```Cpp
 void ShowTime(int hour, int minute) {
   // この関数は、時間と分をLEDに表示するためのものです。
@@ -233,7 +233,7 @@ int hue = ((huefin - huestart) / 37) * index + huestart; // 色の範囲を指�
 ```Cpp
 hue = ((huefin - huestart) / 37) * index + huestart;
 ```
-この部分は`huefin`と`huestart`の差を37(neopixelは全部で74個なのでその半分）で割り、それに`index`を掛けて`huestart`を足すことで、指定された範囲内でインデックスに応じた色相を計算します。
+この部分は`huefin`と`huestart`の差を37(Neopixelは全部で74個なのでその半分）で割り、それに`index`を掛けて`huestart`を足すことで、指定された範囲内でインデックスに応じた色相を計算します。
 `index`は現在のLEDの位置を示す値で、0から徐々に増加します。
 例えば、`index`が0のとき、hueは`huestart`（0）となり、`index`が最大のとき、`hue`は`huefin`（65535）に近い値になります。
 
