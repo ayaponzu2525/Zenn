@@ -17,6 +17,7 @@ published: false
 ということはSpresenseはAdafruitのライブラリのsetPixelColor関数は使えないということになります。
 
 めっちゃ困りましたね...
+
 ということでSpresenseでも使えるライブラリを探そう！となりそこからNeopixelを好きな色、明るさで光らせられるようになるまでのお話です。
 
 ## ライブラリを探す
