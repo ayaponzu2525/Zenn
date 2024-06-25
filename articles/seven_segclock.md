@@ -1,5 +1,5 @@
 ---
-title: "esp32とNeopixelを使った7セグ風BigClock!"
+title: "esp32とNeopixelを使ったオーロラレボリューションクロック"
 emoji: kissing_face_with_closed_eyes
 type: idea
 topics: [esp32, Neopixel, M5stack, 電子工作, Arduino]
@@ -9,7 +9,10 @@ published: true
 # はじめに
 こんにちは！ayaponzuです。
 今回はクラスメイトと作業を分担して<br>
-esp32とNeopixelを使用して7セグ風のでっかい時計を作りました。
+esp32とNeopixelを使用して7セグ風のでっかい時計を作りました。<br>
+Protopediaでも紹介しています。ぜひご覧ください。
+@[card](https://protopedia.net/prototype/5218)
+
 ![](https://storage.googleapis.com/zenn-user-upload/8bc730651461-20240619.jpg)
 
 # 全体のタスク
