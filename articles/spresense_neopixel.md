@@ -25,12 +25,15 @@ published: false
 
 ### ライブラリの保存場所について
 ArduinoIDEのライブラリはスケッチと一緒の場所に保存されています。各OSごとの保存場所は以下の通りです。
+ちなみに僕はWindowsです。
+
 | OS | 場所 |
 | ---- | ---- |
-| Windows app版 | C:￥Users￥ユーザー名￥Documents￥Arduino |
-| Windows ZIP版 / インストーラ版 | C:￥Users￥ユーザー名￥Documents￥Arduino |
+| Windows | C:￥Users￥ユーザー名￥Documents￥Arduino |
 | Mac | /Users/ユーザー名/Documents/Arduino |
 | Linux | /home/ユーザー名/Arduino |
+
+このディレクトリの保存先はArduinoIDEの [ファイル -> 基本設定 -> スケッチブックの場所]の参照ボタンを押して任意の場所に変更できます。
 
 ## ライブラリを探す
 まずは使そうなライブラリを探しました。
