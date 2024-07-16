@@ -39,7 +39,8 @@ ArduinoIDEのライブラリはスケッチと一緒の場所に保存されて�
 
 ## ライブラリを探す
 まずは使そうなライブラリを探しました。
-一つ目に見つけたのが
+一つ目に見つけたのが KotaMeiwa/nepils です。
+@[card](https://github.com/KotaMeiwa/nepils)
 
 ## 使ってみる
 
