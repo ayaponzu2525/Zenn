@@ -23,6 +23,8 @@ published: True
 ![](https://storage.googleapis.com/zenn-user-upload/56e4b262434a-20240730.jpg)
 ↑巡回クン
 
+@[card](https://protopedia.net/prototype/5288)
+
 ## ライブラリの入れ方について
 これからいろいろなライブラリを紹介していきますが、そのライブラリをArduinoIDEに入れる方法をここで書いておきます。
 
