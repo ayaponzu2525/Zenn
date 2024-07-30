@@ -1,7 +1,7 @@
 ---
 title: "SpresenseでNeopixelのsetPixelColorを使いたい！"
 emoji: kissing_face_with_closed_eyes
-type: idea
+type: tech
 topics: [Spresense, Neopixel, 電子工作, Arduino]
 published: True
 ---
