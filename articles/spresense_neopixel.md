@@ -44,8 +44,10 @@ ArduinoIDEのライブラリはスケッチと一緒の場所に保存されて�
 githubでは緑の $\textcolor{green}{code}$ というボタンをクリックして`Download ZIP` でダウンロードすることができます。
 
 次にダウンロードしたファイルをlibrariesに追加します。
-Arduino IDEのツール　-> 
+Arduino IDEのツール　-> ライブラリをインクルード　-> .ZIP形式のライブラリをインストール　でファイルが開くのでダウンロードしたzipファイルを選択します。
 ![](https://storage.googleapis.com/zenn-user-upload/4cbab84ead8f-20240730.png)
+
+これでライブラリを追加することができます。
 
 ## ライブラリを探す
 まずは使そうなライブラリを探しました。
@@ -62,7 +64,7 @@ Arduino IDEのツール　->
 
 ## ライブラリを見つけた
 いよいよ本題のライブラリに到達します。
-先生に個のライブラリ使ってみなーてゆわれて見つけました。
+先生にこのライブラリ使ってみなーてゆわれて見つけました。
 それがこちらの lipoyang/SPI_NeoPixel です。
 @[card](https://github.com/lipoyang/SPI_NeoPixel)<br>
 
@@ -142,6 +144,13 @@ uint32_t Wheel(byte WheelPos, uint8_t maxBrightness) {
 少しこのプログラム解説します。
 
 まず、Neopixelを点灯する部分のプログラムですね。
+```Cpp
+neopixel.setPixelColor(光らせたいLEDのindex, 色(16進数))
+```
+これで任意の色で一つのLEDを光らせることができます。
+ちなみに色は Adafruit とちがい１６進数になっています。
+↓こちらのサイトで任意の色の１６進数が探せるとおもうのでぜひ活用してください。
+https://www.colordic.org/#google_vignette
 
 
 
