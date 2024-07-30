@@ -43,12 +43,87 @@ ArduinoIDEのライブラリはスケッチと一緒の場所に保存されて�
 一つ目に見つけたのが KotaMeiwa/nepils です。
 @[card](https://github.com/KotaMeiwa/nepils)<br>
 
-こちらはかの有名なAdafruit_NeoPixel を継承しているらしく、今までそれを使ってきた人はすんなり使えると思います。が、'setPixelColor' は使えませんでした。なんでだろ？
+こちらは、かの有名な Adafruit_NeoPixel を継承しているらしく、今までそれを使ってきた人はすんなり使えると思います。が、`setPixelColor` は使えませんでした。なんでだろ？
 
-2つ目に見つけたのは
+2つ目に見つけたのは hideakitai/SpresenseNeoPixel です。
+@[card](https://github.com/hideakitai/SpresenseNeoPixel)<br>
+
+これも使ってみたのですが、やはり`setPixelColor`が使いたくてやめました。（笑）
 
 ## ライブラリを見つけた
+いよいよ本題のライブラリに到達します。
+先生に個のライブラリ使ってみなーてゆわれて見つけました。
+それがこちらの lipoyang/SPI_NeoPixel です。
+@[card](https://github.com/lipoyang/SPI_NeoPixel)<br>
 
 ## サンプルコード
+試しに虹色に光らせてみます。
+今回spresense本体と拡張ボードを使っています。
+
+![](https://storage.googleapis.com/zenn-user-upload/160709457ca1-20240730.png)<br>
+
+Neopixelの信号線は拡張ボードのD11ピン（右の方）に接続しています。
+あとは5vとGNDで大丈夫です。
+```Cpp
+#include <SPI.h>
+#include <SPI_NeoPixel.h>
+//https://github.com/lipoyang/SPI_NeoPixel
+
+const uint16_t NUM_PIXELS = 42; //NeopixelのLED数
+//spiの送信のピン　= 11
+
+SPI_NeoPixel neopixel(NUM_PIXELS);
+
+void setup() {
+
+  Serial.begin(115200);
+  delay(1000);
+
+  neopixel.begin();
+
+  Serial.println("Serial console start!");
+}
+
+void loop() {
+  rainbowCycle(10, 128);  // 虹色サイクルを10回繰り返し、最大の明るさを128に設定する
+  delay(500);
+}
+
+// 特定のLEDを点灯させる関数
+void setPixelColor(int pixelIndex, uint32_t color) {
+  if (pixelIndex >= 0 && pixelIndex < NUM_PIXELS) {
+    neopixel.setPixelColor(pixelIndex, color);
+    neopixel.show();
+  }
+}
+
+// 虹色サイクルを実現する関数
+void rainbowCycle(uint8_t wait, uint8_t maxBrightness) {
+  uint16_t i, j;
+
+  for (j = 0; j < 256 * 5; j++) {  // 5 cycles of all colors on wheel
+    for (i = 0; i < neopixel.numPixels(); i++) {
+      neopixel.setPixelColor(i, Wheel(((i * 256 / neopixel.numPixels()) + j) & 255, maxBrightness));
+    }
+    neopixel.show();
+    delay(wait);
+  }
+}
+
+// 虹色効果を生成する関数
+uint32_t Wheel(byte WheelPos, uint8_t maxBrightness) {
+  WheelPos = 255 - WheelPos;
+  if (WheelPos < 85) {
+    return neopixel.Color(((255 - WheelPos * 3) * maxBrightness) / 255, (WheelPos * 3 * maxBrightness) / 255, 0);
+  }
+  if (WheelPos < 170) {
+    WheelPos -= 85;
+    return neopixel.Color(0, ((WheelPos * 3 * maxBrightness) / 255), ((255 - WheelPos * 3 * maxBrightness) / 255));
+  }
+  WheelPos -= 170;
+  return neopixel.Color(((WheelPos * 3 * maxBrightness) / 255), 0, ((255 - WheelPos * 3 * maxBrightness) / 255));
+}
+```
+
 
 ##  
