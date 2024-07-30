@@ -64,6 +64,7 @@ ArduinoIDEのライブラリはスケッチと一緒の場所に保存されて�
 
 Neopixelの信号線は拡張ボードのD11ピン（右の方）に接続しています。
 あとは5vとGNDで大丈夫です。
+:::details 虹色に光らせるプログラム
 ```Cpp
 #include <SPI.h>
 #include <SPI_NeoPixel.h>
@@ -124,6 +125,7 @@ uint32_t Wheel(byte WheelPos, uint8_t maxBrightness) {
   return neopixel.Color(((WheelPos * 3 * maxBrightness) / 255), 0, ((255 - WheelPos * 3 * maxBrightness) / 255));
 }
 ```
+:::
 
 
 ##  
