@@ -20,6 +20,9 @@ published: True
 
 ということでSpresenseでも使えるライブラリを探そう！となり、そこからNeopixelを好きな色、明るさで光らせられるようになるまでのお話です。
 
+![](https://storage.googleapis.com/zenn-user-upload/56e4b262434a-20240730.jpg)
+↑巡回クン
+
 ## ライブラリの入れ方について
 これからいろいろなライブラリを紹介していきますが、そのライブラリをArduinoIDEに入れる方法をここで書いておきます。
 
