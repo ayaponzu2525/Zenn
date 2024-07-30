@@ -3,7 +3,7 @@ title: "SpresenseでNeopixelのsetPixelColorを使いたい！"
 emoji: kissing_face_with_closed_eyes
 type: idea
 topics: [Spresense, Neopixel, 電子工作, Arduino]
-published: false
+published: True
 ---
 
 ## きっかけ
@@ -68,14 +68,14 @@ Arduino IDEのツール　-> ライブラリをインクルード　-> .ZIP形�
 それがこちらの lipoyang/SPI_NeoPixel です。
 @[card](https://github.com/lipoyang/SPI_NeoPixel)<br>
 
-## サンプルコード
+## 虹色サンプルコード
 試しに虹色に光らせてみます。
 今回spresense本体と拡張ボードを使っています。
 
 ![](https://storage.googleapis.com/zenn-user-upload/160709457ca1-20240730.png)<br>
 
 Neopixelの信号線は拡張ボードのD11ピン（右の方）に接続しています。
-あとは5vとGNDで大丈夫です。
+あとは5VとGNDで大丈夫です。
 :::details 虹色に光らせるプログラム
 ```Cpp
 #include <SPI.h>
@@ -153,7 +153,7 @@ neopixel.setPixelColor(光らせたいLEDのindex, 色(16進数))
 https://www.colordic.org/#google_vignette
 
 それでは虹色部分を解説していきます。
-まず、虹色を生成しているWheel関数です。
+まず、虹色を生成している`Wheel`関数です。
 ```Cpp
 uint32_t Wheel(byte WheelPos, uint8_t maxBrightness) {
     WheelPos = 255 - WheelPos;
@@ -185,7 +185,7 @@ WheelPosは0~255までの値で色の変化を示しています。<br>
 明るさを255にするとかなりの電流が流れるので注意
 :::
 
-これで虹色が生成できたのでそれを適用する関数rainbowCycleについて解説します。
+これで虹色が生成できたのでそれを適用する関数`rainbowCycle`について解説します。
 ```Cpp
 void rainbowCycle(uint8_t wait, uint8_t maxBrightness) {
   uint16_t i, j;
@@ -213,4 +213,8 @@ Wheel関数を使って、各LEDの色を計算します。`((i * 256 / neopixel
 * 遅延
 `delay(wait)`で指定した時間だけ待機します。短くすればするほど早く虹色が変わっていきます。
 
-##  
+##  おわりに
+なかなかSpresenseは癖が強いですね、、、（笑）
+でも高性能にはちがいないのでこれからも遊んでみようと思います。
+巡回君もアップグレードしていきます！
+最後まで読んでいただきありがとうございました！
