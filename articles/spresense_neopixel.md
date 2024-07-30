@@ -152,6 +152,65 @@ neopixel.setPixelColor(光らせたいLEDのindex, 色(16進数))
 ↓こちらのサイトで任意の色の１６進数が探せるとおもうのでぜひ活用してください。
 https://www.colordic.org/#google_vignette
 
+それでは虹色部分を解説していきます。
+まず、虹色を生成しているWheel関数です。
+```Cpp
+uint32_t Wheel(byte WheelPos, uint8_t maxBrightness) {
+    WheelPos = 255 - WheelPos;
+```
+引数にはWheelPosという値と最大の明るさを取っています。
+WheelPosは0~255までの値で色の変化を示しています。<br>
 
+その次の行で位置を反転させています。これで色の変化の方向を逆にしています。
+
+次に色の計算部分です。
+```Cpp
+  if (WheelPos < 85) {
+    return neopixel.Color(((255 - WheelPos * 3) * maxBrightness) / 255, (WheelPos * 3 * maxBrightness) / 255, 0);
+  }
+  if (WheelPos < 170) {
+    WheelPos -= 85;
+    return neopixel.Color(0, ((WheelPos * 3 * maxBrightness) / 255), ((255 - WheelPos * 3 * maxBrightness) / 255));
+  }
+  WheelPos -= 170;
+  return neopixel.Color(((WheelPos * 3 * maxBrightness) / 255), 0, ((255 - WheelPos * 3 * maxBrightness) / 255));
+}
+```
+最初の部分：WheelPosが0から85までの範囲では、赤から緑へ色が変化します。
+中間部分：WheelPosが86から170までの範囲では、緑から青へ色が変化します。
+最後の部分：WheelPosが171から255までの範囲では、青から赤へ色が変化します。
+
+そこに`maxBrightness`をかけて明るさを調整しています。
+:::message alert
+明るさを255にするとかなりの電流が流れるので注意
+:::
+
+これで虹色が生成できたのでそれを適用する関数rainbowCycleについて解説します。
+```Cpp
+void rainbowCycle(uint8_t wait, uint8_t maxBrightness) {
+  uint16_t i, j;
+
+  for (j = 0; j < 256 * 5; j++) {  // 5 cycles of all colors on wheel
+    for (i = 0; i < neopixel.numPixels(); i++) {
+      neopixel.setPixelColor(i, Wheel(((i * 256 / neopixel.numPixels()) + j) & 255, maxBrightness));
+    }
+    neopixel.show();
+    delay(wait);
+  }
+}
+```
+引数は各更新の待機時間と最大の明るさです。
+* ループ
+外側の`forループ`は`j`というカウンタを使って、色の変化を繰り返します。この場合、`256 * 5`回繰り返します。つまり、虹色のエフェクトを5回繰り返すことになります。
+内側の`forループ`は`i`というカウンタを使って、各LEDの色を設定します。
+* 色の計算
+Wheel関数を使って、各LEDの色を計算します。`((i * 256 / neopixel.numPixels()) + j) & 255`は、各LEDの位置に基づいて色を設定するための計算です。
+これにより、LEDが連続して虹色に変化するようになります。
+
+* 色の設定と表示
+`neopixel.setPixelColor(i, Wheel(...))`で各LEDの色を設定します。
+`neopixel.show()`で設定した色を表示します。
+* 遅延
+`delay(wait)`で指定した時間だけ待機します。短くすればするほど早く虹色が変わっていきます。
 
 ##  
