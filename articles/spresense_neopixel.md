@@ -1,5 +1,5 @@
 ---
-title: "SpresenseでsetPixelColorを使いたい！"
+title: "SpresenseでNeopixelのsetPixelColorを使いたい！"
 emoji: kissing_face_with_closed_eyes
 type: idea
 topics: [Spresense, Neopixel, 電子工作, Arduino]
@@ -39,10 +39,13 @@ ArduinoIDEのライブラリはスケッチと一緒の場所に保存されて�
 
 ## ライブラリを探す
 まずは使そうなライブラリを探しました。
-一つ目に見つけたのが KotaMeiwa/nepils です。
-@[card](https://github.com/KotaMeiwa/nepils)
 
-## 使ってみる
+一つ目に見つけたのが KotaMeiwa/nepils です。
+@[card](https://github.com/KotaMeiwa/nepils)<br>
+
+こちらはかの有名なAdafruit_NeoPixel を継承しているらしく、今までそれを使ってきた人はすんなり使えると思います。が、'setPixelColor' は使えませんでした。なんでだろ？
+
+2つ目に見つけたのは
 
 ## ライブラリを見つけた
 
