@@ -226,6 +226,9 @@ Pythonで有名なものはnumpy、matplotribとかです。<br>これに対し�
 
 # DjangoとFlaskの比較
 
+![bg](https://github.com/ayaponzu2525/Zenn/blob/main/images/shiftgenerator1.md/django.png?raw=true)
+![bg](https://github.com/ayaponzu2525/Zenn/blob/main/images/shiftgenerator1.md/flask.png?raw=true)
+
 Djangoと同じくPythonベースのフレームワークとして**Flask**があります。それぞれの特徴を比較してみます。
 
 ## 共通点
