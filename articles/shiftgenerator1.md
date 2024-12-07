@@ -1,5 +1,5 @@
 ---
-title: "バイト先のシフト作成業務を改善したい話"
+title: "バイト先のシフト作成業務を効率化したい話～技術選定編～"
 emoji: kissing_face_with_closed_eyes
 type: tech
 topics: [Python, Django, Webアプリ]
