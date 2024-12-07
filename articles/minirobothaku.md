@@ -57,7 +57,7 @@ https://yao-city.note.jp/n/ndb1ff2514b36
 ## クリスマスツリーのイルミネーション
 クリスマスツリーにNelpixelというフルカラーのLEDテープを巻き付けて色、光り方をプログラミングしてもらうという内容です。
 
-![](https://github.com/ayaponzu2525/Zenn/blob/main/images/minirobot/%E5%B0%8F%E3%81%95%E3%81%AA%E3%83%AD%E3%83%9C%E3%83%83%E3%83%88%E5%8D%9A%E3%82%AF%E3%83%AA%E3%82%B9%E3%83%9E%E3%82%B9%E3%83%84%E3%83%AA%E3%83%BC.png?raw=true)
+![](https://github.com/ayaponzu2525/Zenn/blob/main/images/minirobot/%E5%B0%8F%E3%81%95%E3%81%AA%E3%83%AD%E3%83%9C%E3%83%83%E3%83%88%E5%8D%9A%E3%82%AF%E3%83%AA%E3%82%B9%E3%83%9E%E3%82%B9%E3%83%84%E3%83%AA%E3%83%BC%20%E5%9C%A7%E7%B8%AE.png?raw=true)
 
 この２つのカードを印刷して説明しました。
 
