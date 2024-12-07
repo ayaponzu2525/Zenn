@@ -3,7 +3,7 @@ title: "小学生の未来に火をつける！小さなロボット博に参加
 emoji: kissing_face_with_closed_eyes
 type: idea
 topics: [Microbit, Neopixel, 電子工作, ロボット, 車]
-published: false
+published: True
 ---
 
 # はじめに
