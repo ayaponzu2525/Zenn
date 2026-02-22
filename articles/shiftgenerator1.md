@@ -10,8 +10,8 @@ published: True
 
 現在の進捗状況は随時こちらのNotionに更新しています。
 
-👉 **【店長はこちらをご確認ください】**  
-🔗 https://www.notion.so/UI-1fc088080ca280d4ace9f5e2cab24207?pvs=4
+👇 **【店長はこちらをご確認ください】**  
+https://www.notion.so/UI-1fc088080ca280d4ace9f5e2cab24207?pvs=4
 
 ---
 
