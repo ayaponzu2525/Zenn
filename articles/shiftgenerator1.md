@@ -6,9 +6,17 @@ topics: [Python, Django, Webアプリ]
 published: True
 ---
 
-## 2025年 現状UI
-現在の進捗状況は随時こちらのnotionに更新しています。
-https://www.notion.so/UI-1fc088080ca280d4ace9f5e2cab24207?pvs=4
+## 2026年 現状UI
+
+現在の進捗状況は随時こちらのNotionに更新しています。
+
+👉 **【店長はこちらをご確認ください】**  
+🔗 https://www.notion.so/UI-1fc088080ca280d4ace9f5e2cab24207?pvs=4
+
+---
+
+※ここから先は制作の裏話なので、店長はスキップでOKです！🙆‍♂️
+
 
 ## はじめに
 皆さんこんにちは！ayaponzuです！
